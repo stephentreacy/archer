@@ -1,0 +1,14 @@
+[project]
+name = "archer"
+version = "0.1.0"
+description = "A modular Discord bot built with serverless architecture"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.5.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.4.2", "ruff>=0.12.12"]
+
+[build-system]
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
