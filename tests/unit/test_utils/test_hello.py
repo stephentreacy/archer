@@ -1,4 +1,4 @@
-from archer.main import hello_world
+from archer.utils.hello import hello_world
 
 
 def test_hello_world():
