@@ -4,7 +4,11 @@ version = "0.1.0"
 description = "A modular Discord bot built with serverless architecture"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pydantic>=2.5.0"]
+dependencies = [
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.11.0",
+    "requests>=2.32.5",
+]
 
 [dependency-groups]
 dev = ["pytest>=8.4.2", "ruff>=0.12.12"]
