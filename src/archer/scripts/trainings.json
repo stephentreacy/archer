@@ -1,7 +1,7 @@
 {
     "indoor": {
-        "start_date": "2026-01-07",
-        "end_date": "2026-05-31",
+        "start_date": "2026-09-01",
+        "end_date": "2026-12-31",
         "training_sessions": {
             "Monday": [
                 {
@@ -68,33 +68,12 @@
         }
     },
     "outdoor": {
-        "start_date": "2025-03-08",
-        "end_date": "2025-08-31",
+        "start_date": "2026-09-01",
+        "end_date": "2026-12-31",
         "training_sessions": {
-            "Tuesday": [
-                {
-                    "time": "14:00-18:00",
-                    "name": "Outdoor Training",
-                    "location": "Dangan"
-                }
-            ],
-            "Thursday": [
-                {
-                    "time": "14:00-18:00",
-                    "name": "Outdoor Training",
-                    "location": "Dangan"
-                }
-            ],
             "Friday": [
                 {
-                    "time": "17:00-20:00",
-                    "name": "Outdoor Training",
-                    "location": "Dangan"
-                }
-            ],
-            "Saturday": [
-                {
-                    "time": "10:00-14:00",
+                    "time": "14:00-17:00",
                     "name": "Outdoor Training",
                     "location": "Dangan"
                 }
