@@ -29,5 +29,20 @@ class DiscordAPIClient:
         channel_id: str,
         embeds: list[Embed],
     ) -> None:
-        payload = {"embeds": [embed.model_dump() for embed in embeds]}
+        payload = {
+            "embeds": [embed.model_dump() for embed in embeds],
+            "components": [
+                {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "style": 1,
+                            "label": "Get attendance",
+                            "custom_id": "get_attendance",
+                        }
+                    ],
+                }
+            ],
+        }
         self._send_request(f"{self.base_url}/channels/{channel_id}/messages", payload)
