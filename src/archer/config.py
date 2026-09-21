@@ -7,3 +7,9 @@ class DiscordConfig(BaseSettings):
     attendance_channel_id: int
 
     model_config = ConfigDict(env_file=".env", extra="ignore")
+
+
+class HandlerSettings(BaseSettings):
+    archer_public_key: str = Field(..., repr=False)
+
+    model_config = ConfigDict(env_file=".env", extra="ignore")
