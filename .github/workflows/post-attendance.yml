@@ -34,5 +34,6 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           ATTENDANCE_CHANNEL_ID: ${{ secrets.ATTENDANCE_CHANNEL_ID }}
+          TRAINING_DATA: ${{ vars.TRAINING_DATA }}
         run: |
           uv run src/archer/scripts/post_attendance.py

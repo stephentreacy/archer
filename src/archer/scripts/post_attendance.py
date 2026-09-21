@@ -1,7 +1,5 @@
-import json
 import logging
 from datetime import UTC, date, datetime, timedelta
-from pathlib import Path
 
 from archer.config import DiscordConfig
 from archer.discord_client import DiscordAPIClient
@@ -9,15 +7,7 @@ from archer.models.embed import Embed, EmbedField
 from archer.models.training import TrainingData, TrainingSession
 
 logger = logging.getLogger(__name__)
-
-
-def load_training_data(
-    file_path: Path = Path("src/archer/scripts/trainings.json"),
-) -> TrainingData:
-    """Load training data from the JSON file."""
-    with Path.open(file_path) as f:
-        data = json.load(f)
-    return TrainingData.model_validate(data)
+logging.basicConfig(level=logging.INFO)
 
 
 def get_training_sessions(
@@ -64,14 +54,12 @@ def post_training(
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     config = DiscordConfig()
-    training_data = load_training_data()
 
     tomorrow_date = datetime.now(UTC).date() + timedelta(days=1)
 
     training_sessions = get_training_sessions(
-        training_data=training_data, training_date=tomorrow_date
+        training_data=config.training_data, training_date=tomorrow_date
     )
     discord_client = DiscordAPIClient(
         config.discord_token, config.attendance_channel_id

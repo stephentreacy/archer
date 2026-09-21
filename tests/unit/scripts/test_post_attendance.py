@@ -1,6 +1,4 @@
-import json
 from datetime import date
-from pathlib import Path
 from unittest.mock import Mock
 
 import pytest
@@ -10,65 +8,8 @@ from archer.models.embed import EmbedField
 from archer.models.training import TrainingData, TrainingSession
 from archer.scripts.post_attendance import (
     get_training_sessions,
-    load_training_data,
     post_training,
 )
-
-
-@pytest.fixture
-def test_training_data_dict() -> dict:
-    return {
-        "indoor": {
-            "start_date": "2025-01-01",
-            "end_date": "2025-02-28",
-            "training_sessions": {
-                "Monday": [
-                    {
-                        "time": "07:00-09:00",
-                        "name": "Development Squad Training",
-                        "location": "Kingfisher (Hall 3)",
-                    },
-                    {
-                        "time": "17:00-20:00",
-                        "name": "Advanced Training",
-                        "location": "Kingfisher (Hall 3)",
-                    },
-                ],
-                "Tuesday": [
-                    {
-                        "time": "07:00-09:00",
-                        "name": "Development Squad Training",
-                        "location": "Kingfisher (Hall 3)",
-                    }
-                ],
-            },
-        },
-        "outdoor": {
-            "start_date": "2025-02-01",
-            "end_date": "2025-03-31",
-            "training_sessions": {
-                "Tuesday": [
-                    {
-                        "time": "14:00-18:00",
-                        "name": "Outdoor Training",
-                        "location": "Dangan",
-                    }
-                ]
-            },
-        },
-    }
-
-
-@pytest.fixture
-def test_training_file(tmp_path: Path, test_training_data_dict: dict):
-    temp_file = tmp_path / "test_trainings.json"
-    temp_file.write_text(json.dumps(test_training_data_dict))
-    return temp_file
-
-
-@pytest.fixture
-def test_training_data_model(test_training_data_dict: dict) -> TrainingData:
-    return TrainingData.model_validate(test_training_data_dict)
 
 
 @pytest.fixture
@@ -77,14 +18,6 @@ def discord_client_mock():
 
 
 class TestPostAttendance:
-    def test_load_training_data(
-        self, test_training_file: Path, test_training_data_model: TrainingData
-    ):
-        training_data = load_training_data(
-            file_path=test_training_file,
-        )
-        assert training_data == test_training_data_model
-
     def test_get_training_sessions_indoor(self, test_training_data_model: TrainingData):
         indoor_monday_date = date(2025, 1, 6)  # Monday
 
