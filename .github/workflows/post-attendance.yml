@@ -1,7 +1,7 @@
 name: Post Attendance
 on:
   schedule:
-    - cron: '24 17 * * *' # Runs every day at 17:24 UTC
+    - cron: '24 15 * * *' # Runs every day at 17:24 UTC
   workflow_dispatch:
     inputs:
       environment:
